@@ -6,6 +6,7 @@ public class Aplicacion {
 
 	public Aplicacion() {
 		ListaSimpleEnlazada les=new ListaSimpleEnlazada();
+
 	}
 	
 	public static void main(String[] args) {

@@ -2,6 +2,9 @@
  * Enunciado derivado de la siguiente URL:
  * https://www.it.uc3m.es/java/2011-12/units/pilas-colas/guides/2/guide_es_solution.html
  * Se ha modificado en clase.
+ * 
+ * ¿Cómo funciona la visibilidad en clases anidadas?
+ * https://stackoverflow.com/questions/28267896/how-does-visibility-work-for-java-nested-classes
  * @param <T>
  */
 
@@ -10,35 +13,34 @@ import depurador.Depurador;
 
 public class ListaSimpleEnlazada<T> {
 
-	public class Nodo<T> {
-		public T contenido;
-		public Nodo<T> siguiente;
+	private class Nodo {
+		private T contenido;
+		private Nodo siguiente;
 		
-		public Nodo(T contenido) {
+		private Nodo(T contenido) {
 			this.contenido=contenido;
 			this.siguiente=null;
 		}
 	}
 	
-	Nodo<T> cabecera;
+	Nodo cabecera;
 	
 	public ListaSimpleEnlazada(){
 		cabecera=null;
 	}
 	
 	public void insertar(T contenido) {
-		Nodo<T> nuevoNodo=new Nodo<T>(contenido);
+		Nodo nuevoNodo=new Nodo(contenido);
 		if(cabecera==null)
 			cabecera=nuevoNodo;
-			
 	}
 	
-	public T extraer() {
+/*	public T extraer() {
 		
 	}
 	
 	public T consultar(int i) {
 		
 	}
-	
+	*/
 }
