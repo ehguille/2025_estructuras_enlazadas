@@ -14,7 +14,7 @@ import depurador.Depurador;
 public class ListaSimpleEnlazada<T> {
 
 	private class Nodo {
-		private T contenido;
+		private T contenido; //Estas variables podrían ser públicas y no cambiaría nada.
 		private Nodo siguiente;
 		
 		private Nodo(T contenido) {
@@ -23,17 +23,24 @@ public class ListaSimpleEnlazada<T> {
 		}
 	}
 	
-	Nodo cabecera;
+	private Nodo cabecera;
 	
 	public ListaSimpleEnlazada(){
 		cabecera=null;
 	}
 	
 	public void insertar(T contenido) {
-		Nodo nuevoNodo=new Nodo(contenido);
 		if(cabecera==null)
-			cabecera=nuevoNodo;
+			cabecera=new Nodo(contenido);
+		else {
+			Nodo nodoIterador=cabecera;
+			while(nodoIterador.siguiente!=null) {
+				nodoIterador=nodoIterador.siguiente;
+			}
+			nodoIterador.siguiente=new Nodo(contenido);
+		}
 	}
+
 	
 /*	public T extraer() {
 		

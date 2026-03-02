@@ -5,7 +5,11 @@ import depurador.Depurador;
 public class Aplicacion {
 
 	public Aplicacion() {
-		ListaSimpleEnlazada les=new ListaSimpleEnlazada();
+		ListaSimpleEnlazada<String> les=new ListaSimpleEnlazada<String>();
+		les.insertar("Hola");
+		les.insertar("Adios");
+		System.out.println(les);
+		
 
 	}
 	
