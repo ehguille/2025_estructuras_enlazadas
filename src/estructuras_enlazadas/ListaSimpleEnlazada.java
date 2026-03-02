@@ -5,6 +5,8 @@
  * @param <T>
  */
 
+package estructuras_enlazadas;
+import depurador.Depurador;
 
 public class ListaSimpleEnlazada<T> {
 
