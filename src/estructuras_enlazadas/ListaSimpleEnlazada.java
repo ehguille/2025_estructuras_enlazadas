@@ -15,18 +15,18 @@ import depurador.Depurador;
 
 public class ListaSimpleEnlazada<T> {
 
-	private class Nodo {
-		private T contenido; //Estas variables podrían ser públicas y no cambiaría nada.
-		private Nodo siguiente;
+	protected class Nodo {
+		protected T contenido; //Estas variables podrían ser públicas y no cambiaría nada.
+		protected Nodo siguiente;
 		
-		private Nodo(T contenido) {
+		protected Nodo(T contenido) {
 			this.contenido=contenido;
 			this.siguiente=null;
 		}
 	}
 	
-	private Nodo cabecera;
-	private int size;
+	protected Nodo cabecera;
+	protected int size;
 	
 	public ListaSimpleEnlazada(){
 		size=0;
@@ -64,6 +64,7 @@ public class ListaSimpleEnlazada<T> {
 		if(posicion==0) {
 			T contenido=cabecera.contenido;
 			cabecera=cabecera.siguiente;
+			size--;
 			return contenido;
 		}
 		//Para eliminar el resto.
@@ -73,6 +74,7 @@ public class ListaSimpleEnlazada<T> {
 		}
 		T contenido=iterador.siguiente.contenido;
 		iterador.siguiente=iterador.siguiente.siguiente;
+		size--;
 		return contenido;
 	}
 
@@ -86,7 +88,31 @@ public class ListaSimpleEnlazada<T> {
 		return iterador.contenido;
 	}
 	
-	
+	public boolean borrar(T contenido) {
+		boolean resultado=false;
+		//Solo tiene sentido si la lista tiene contenido;
+		if(cabecera!=null) {
+			Nodo nodoIterador=cabecera;
+			//Para el primer nodo
+			if(cabecera.contenido.equals(contenido)) {
+				cabecera=cabecera.siguiente;
+				size--;
+				resultado=true;
+			}
+			//Para el resto
+			while(nodoIterador.siguiente!=null) {
+				if(nodoIterador.siguiente.contenido.equals(contenido)) {
+					nodoIterador.siguiente=nodoIterador.siguiente.siguiente;
+					size--;
+					resultado=true;
+				}
+				else
+					nodoIterador=nodoIterador.siguiente;
+			}
+		}
+		return resultado;
+	}
+		
 	public String toString() {
 		String resultado= "[";
 		Nodo nodoIterador=cabecera;
@@ -98,7 +124,6 @@ public class ListaSimpleEnlazada<T> {
 		}
 		resultado+="]";
 		return resultado;
-		
 	}
 	
 }
