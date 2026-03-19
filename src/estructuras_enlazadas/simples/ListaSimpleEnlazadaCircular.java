@@ -1,4 +1,4 @@
-package estructuras_enlazadas;
+package estructuras_enlazadas.simples;
 
 /**
  * https://programacionfacilestructuradedatos.blogspot.com/2017/05/listas-circulares.html

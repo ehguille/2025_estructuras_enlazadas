@@ -1,6 +1,7 @@
-package estructuras_enlazadas;
+package estructuras_enlazadas.simples;
 
 import depurador.Depurador;
+import estructuras_enlazadas.simples.ListaSimpleEnlazada.Nodo;
 
 public class ListaSimpleEnlazadaOrdenada<T extends Comparable<T>> extends ListaSimpleEnlazada<T> {
 

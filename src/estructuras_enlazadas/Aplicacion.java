@@ -1,19 +1,28 @@
 package estructuras_enlazadas;
 
 import depurador.Depurador;
+import estructuras_enlazadas.dobles.ListaDoblementeEnlazada;
+import estructuras_enlazadas.simples.ListaSimpleEnlazada;
+import estructuras_enlazadas.simples.ListaSimpleEnlazadaOrdenada;
 
 public class Aplicacion {
 
 	public Aplicacion() throws Exception {
 		
-		Depurador.apagar();
+		Depurador.encender();
+		ListaDoblementeEnlazada<String> lde=new ListaDoblementeEnlazada<String>();
+		lde.add("Hola");
+		lde.add("Adios");
+		lde.add("Pepe");
+		System.out.println(lde);
+		/*
 		
 		ListaSimpleEnlazada<String> les=new ListaSimpleEnlazada<String>();
 
 		les.insertar("Uno");
 		les.insertar("Dos");
 		les.insertar("Tres");
-
+		
 		System.out.println(les);
 		System.out.println(les.extraer(0));		
 		System.out.println(les);
@@ -34,7 +43,7 @@ public class Aplicacion {
 		lseo.borrar(2);
 		lseo.borrar(4);
 		lseo.borrar(4);
-		System.out.println(lseo);
+		System.out.println(lseo);*/
 	}
 	
 	public static void main(String[] args) throws Exception {

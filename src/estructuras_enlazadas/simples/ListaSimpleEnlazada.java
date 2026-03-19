@@ -10,11 +10,14 @@
  * @param <T>
  */
 
-package estructuras_enlazadas;
+package estructuras_enlazadas.simples;
 import depurador.Depurador;
 
 public class ListaSimpleEnlazada<T> {
 
+	//protected para que pueda accederse desde ListaSimpleEnlazada;
+	//si fuera private, no podría acceder, y si fuera public, podrían
+	//acceder todos.
 	protected class Nodo {
 		protected T contenido; //Estas variables podrían ser públicas y no cambiaría nada.
 		protected Nodo siguiente;
@@ -25,6 +28,7 @@ public class ListaSimpleEnlazada<T> {
 		}
 	}
 	
+	//Para que LSEO pueda heredarlo.
 	protected Nodo cabecera;
 	protected int size;
 	
