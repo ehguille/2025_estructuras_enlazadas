@@ -11,10 +11,13 @@ public class Aplicacion {
 		
 		Depurador.encender();
 		ListaDoblementeEnlazada<String> lde=new ListaDoblementeEnlazada<String>();
-		lde.add("Hola");
-		lde.add("Adios");
-		lde.add("Pepe");
+		lde.insertar("Hola");
+		lde.insertar("Adios");
+		lde.insertar("Pepe");
+		lde.insertar("Maria");
+		lde.insertar("Luisa");
 		System.out.println(lde);
+		Depurador.apagar();
 		/*
 		
 		ListaSimpleEnlazada<String> les=new ListaSimpleEnlazada<String>();

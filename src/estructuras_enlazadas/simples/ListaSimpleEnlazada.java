@@ -12,8 +12,9 @@
 
 package estructuras_enlazadas.simples;
 import depurador.Depurador;
+import estructuras_enlazadas.EstructuraDeDatos;
 
-public class ListaSimpleEnlazada<T> {
+public class ListaSimpleEnlazada<T> implements EstructuraDeDatos<T> {
 
 	//protected para que pueda accederse desde ListaSimpleEnlazada;
 	//si fuera private, no podría acceder, y si fuera public, podrían

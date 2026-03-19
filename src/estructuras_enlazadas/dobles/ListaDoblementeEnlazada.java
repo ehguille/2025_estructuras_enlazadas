@@ -1,6 +1,7 @@
 package estructuras_enlazadas.dobles;
 
 import depurador.Depurador;
+import estructuras_enlazadas.EstructuraDeDatos;
 
 /**
  * https://www.youtube.com/watch?v=Tkf3nD9oUdQ&t=146s
@@ -32,7 +33,7 @@ public class ListaDoblementeEnlazada<T> implements EstructuraDeDatos<T>{
 		lista=null;//cabecera
 	}
 
-	//Añadir al final
+	//TODO: Revisar, falla al añadir más de 2 elementos
 	public void insertar(T dato) {
 		Nodo nuevo=new Nodo(dato);
 		//Para una lista vacía
@@ -82,18 +83,19 @@ public class ListaDoblementeEnlazada<T> implements EstructuraDeDatos<T>{
 	
 	public void retroceder() {}
 	
-	//Devuelve el elemento actual sin sacarlo de la lista
-	public T obtener() {}
+	public T extraer(int i) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}	
 	
 	//Obtiene el elemento y lo saca de la lista
-	public T extraer() {}
+	public T extraer() throws Exception {
+		return null;
+	}
 	
-	public T consultar(int i) {}
-	
-	
-	
-	
-
+	public T consultar(int i) {
+		return null;
+	}
 	
 	public String toString() {
 		String resultado= "[";
@@ -107,6 +109,7 @@ public class ListaDoblementeEnlazada<T> implements EstructuraDeDatos<T>{
 		resultado+="]";
 		return resultado;
 	}
-	
+
+
 
 }

@@ -1,9 +1,9 @@
 package estructuras_enlazadas.simples;
 
 import depurador.Depurador;
-import estructuras_enlazadas.simples.ListaSimpleEnlazada.Nodo;
+import estructuras_enlazadas.EstructuraDeDatos;
 
-public class ListaSimpleEnlazadaOrdenada<T extends Comparable<T>> extends ListaSimpleEnlazada<T> {
+public class ListaSimpleEnlazadaOrdenada<T extends Comparable<T>> extends ListaSimpleEnlazada<T> implements EstructuraDeDatos<T> {
 
 	public void insertar(T contenido) {
 		Nodo nuevoNodo=new Nodo(contenido);
