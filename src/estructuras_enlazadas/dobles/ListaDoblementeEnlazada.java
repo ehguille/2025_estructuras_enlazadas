@@ -2,6 +2,7 @@ package estructuras_enlazadas.dobles;
 
 import depurador.Depurador;
 import estructuras_enlazadas.EstructuraDeDatos;
+import estructuras_enlazadas.ListaException;
 
 /**
  * https://www.youtube.com/watch?v=Tkf3nD9oUdQ&t=146s
@@ -13,31 +14,23 @@ public class ListaDoblementeEnlazada<T> implements EstructuraDeDatos<T>{
 	protected class Nodo {
 		
 		protected T dato;
-		Nodo siguiente;
-		Nodo anterior;
+		protected Nodo siguiente, anterior;
 		
 		protected Nodo(T contenido){
 			dato=contenido;
-			siguiente=null;
-			anterior=null;
-			//anterior tiene que apuntar al último nodo
-			//¿igual hay que pasarle el nodo anterior como parámetro?
 		}
 		
 	}
 	
-	private Nodo lista;//cabecera
+	private Nodo lista, actual;//cabecera
 	private int size;
 	
-	public ListaDoblementeEnlazada() {
-		size=0;
-		lista=null;//cabecera
-	}
-
+	//HECHO
 	public void insertar(T dato) {
 		Nodo n=new Nodo(dato);
 		if(size==0) {
-			lista=n;			
+			lista=n;
+			actual=n;
 			size++;
 		}
 		else {
@@ -50,30 +43,80 @@ public class ListaDoblementeEnlazada<T> implements EstructuraDeDatos<T>{
 		}		
 	}
 	
-	//Borrar el elemento en el que estoy
-	public void borrar() {	}
+	//HECHO
+	public void avanzar() {
+		if(actual!=null&&actual.siguiente!=null)
+			actual=actual.siguiente;
+	}
 	
-	//Borrar en una posición determinada
+	//HECHO
+	public void retroceder() {
+		if(actual!=null&&actual.anterior!=null) {
+			actual=actual.anterior;
+		}
+	}
+		
+	//hecho
+	public T consultar(int i) throws ListaException {
+		Nodo iterador=lista;
+		if(size==0) 
+			throw new ListaException("La lista está vacía.");
+		else if(i>=size) 
+			throw new ListaException("No se puede acceder a una posición mayor que el tamaño de la lista.");
+		else if(i<0) 
+			throw new ListaException("No se puede acceder a una posición negativa.");
+		else 
+			for(int j=0;j<i;j++)
+				iterador=iterador.siguiente;
+		return iterador.dato;
+	}
+	
+	//hecho
+	public T consultar() {
+		return actual.dato;		
+	}
+
+	//REVISAR (no he probado el borrado intermedio): Borrar el elemento en el que estoy
+	public void borrar() {	
+		if(size==1) {
+			lista=null;
+			actual=null;
+		}
+		else if (size>1) {
+			if(actual==lista) { //Primer nodo
+				lista=actual.siguiente;
+				actual=actual.siguiente;
+				actual.anterior=null;
+			} 
+			else if(actual.siguiente==null){ //Último nodo
+				actual=actual.anterior;
+				actual.siguiente=null;
+			}
+			else {
+				actual=actual.anterior;
+				actual.siguiente=actual.siguiente.siguiente;
+				actual.siguiente.siguiente.anterior=actual;
+			}
+		}
+	}
+	
+	//PDTE: Borrar en una posición determinada
 	public void borrar(int posicion) {}
 	
-	public void avanzar() {}
-	
-	public void retroceder() {}
-	
+	//PDTE
 	public T extraer(int i) throws Exception {
+		//consultar() y después borrar()
 		// TODO Auto-generated method stub
 		return null;
-	}	
+	}		
 	
-	//Obtiene el elemento y lo saca de la lista
+	//PDTE: Obtiene el elemento y lo saca de la lista
 	public T extraer() throws Exception {
+		//consultar()+borrar()
 		return null;
 	}
 	
-	public T consultar(int i) {
-		return null;
-	}
-	
+	//hecho
 	public String toString() {
 		String resultado= "[";
 		Nodo nodoIterador=lista;
@@ -86,7 +129,5 @@ public class ListaDoblementeEnlazada<T> implements EstructuraDeDatos<T>{
 		resultado+="]";
 		return resultado;
 	}
-
-
-
+	
 }

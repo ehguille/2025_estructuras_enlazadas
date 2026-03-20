@@ -17,6 +17,11 @@ public class Aplicacion {
 		lde.insertar("Maria");
 		lde.insertar("Luisa");
 		System.out.println(lde);
+		lde.avanzar();
+		lde.avanzar();
+		System.out.println(lde.consultar());
+		lde.borrar();
+		System.out.println(lde);
 		Depurador.apagar();
 		/*
 		
