@@ -19,6 +19,7 @@ public class ListaDoblementeEnlazada<T> implements EstructuraDeDatos<T>{
 		protected Nodo(T contenido){
 			dato=contenido;
 			siguiente=null;
+			anterior=null;
 			//anterior tiene que apuntar al último nodo
 			//¿igual hay que pasarle el nodo anterior como parámetro?
 		}
@@ -33,44 +34,20 @@ public class ListaDoblementeEnlazada<T> implements EstructuraDeDatos<T>{
 		lista=null;//cabecera
 	}
 
-	//TODO: Revisar, falla al añadir más de 2 elementos
 	public void insertar(T dato) {
-		Nodo nuevo=new Nodo(dato);
-		//Para una lista vacía
+		Nodo n=new Nodo(dato);
 		if(size==0) {
-			nuevo.anterior=lista;
-			lista=nuevo;
+			lista=n;			
 			size++;
-			Depurador.trazar("LISTA PREVIAMENTE VACÍA");
-			Depurador.trazar(this.toString());
 		}
 		else {
 			Nodo nodoIterador=lista;
-			//Si solo hay un elemento
-			if(nodoIterador.siguiente==null) {
-				nodoIterador.siguiente=nuevo;
-				nuevo.anterior=nodoIterador;
-				size++;
-				Depurador.trazar("LISTA PREVIAMENTE CON UN ELEMENTO");
-				Depurador.trazar(this.toString());
-			} 
-			else {
-				System.out.println(this);
-				while(nodoIterador!=null) {
-					if(nodoIterador.siguiente!=null) {
-						nodoIterador=nodoIterador.siguiente;
-						Depurador.trazar("SALTANDO DE NODO");
-					}
-					else {
-						nuevo.anterior=nodoIterador;
-						nodoIterador.siguiente=nuevo;
-						size++;
-						Depurador.trazar("LISTA PREVIAMENTE CON MÁS DE UN ELEMENTO");
-						Depurador.trazar(this.toString());
-					}
-				}
-			}
-		}
+			while(nodoIterador.siguiente!=null) 
+				nodoIterador=nodoIterador.siguiente;
+			nodoIterador.siguiente=n;
+			n.anterior=nodoIterador;
+			size++;
+		}		
 	}
 	
 	//Borrar el elemento en el que estoy
